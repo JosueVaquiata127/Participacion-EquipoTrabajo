@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Listado de Miembros</h2>
+  <a href="{{ url_for('bp_miembro.create') }}" class="btn btn-primary mb-3">Nuevo miembro</a>
+
+  {% if miembros %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in miembros %}
+      <tr>
+        <td>{{ m.id }}</td>
+        <td>{{ m.nombre }}</td>
+        <td>{{ m.email }}</td>
+        <td>
+          <a href="{{ url_for('bp_miembro.editar', id=m.id) }}" class="btn btn-warning btn-sm">Editar</a>
+          <form action="{{ url_for('bp_miembro.eliminar', id=m.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="alert alert-info">No hay miembros registrados</div>
+  {% endif %}
+</div>
+{% endblock %}

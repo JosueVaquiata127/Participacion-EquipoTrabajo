@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1 class="mb-3">Listado de tareas</h1>
+  <a href="{{ url_for('bp_tarea.create') }}" class="btn btn-primary mb-3">Nueva tarea</a>
+
+  {% if tareas %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Completado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in tareas %}
+      <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.descripcion }}</td>
+        <td>{{ 'Sí' if item.completado else 'No' }}</td>
+        <td>
+          <a href="{{ url_for('bp_tarea.editar', id=item.id) }}" class="btn btn-warning btn-sm">Editar</a>
+          <form action="{{ url_for('bp_tarea.eliminar', id=item.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="alert alert-info">No hay tareas registradas</div>
+  {% endif %}
+</div>
+{% endblock %}

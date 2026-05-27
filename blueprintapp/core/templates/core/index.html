@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h1>Bienvenido al sistema EquipoTrabajo</h1>
+  <p class="lead">Usa el menú para navegar entre modulos:</p>
+  <ul>
+    <li><a href="{{ url_for('bp_miembro.index') }}">Gestión de Miembros</a></li>
+    <li><a href="{{ url_for('bp_tarea.index') }}">Gestión de Tareas</a></li>
+  </ul>
+</div>
+{% endblock %}
