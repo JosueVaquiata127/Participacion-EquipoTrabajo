@@ -2,32 +2,243 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blueprints - Flask</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">EquipoTrabajo</a>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item"><a class="nav-link" href="{{ url_for('bp_core.index') }}">Core</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url_for('bp_miembro.index') }}">Miembros</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url_for('bp_tarea.index') }}">Tareas</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <title>{% block title %}AppLogin{% endblock %}</title>
 
-    <!-- Contenido dinámico -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* AESPA DASHBOARD */
+body{
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(59,130,246,.20),
+        transparent 35%
+    ),
+
+    radial-gradient(
+        circle at bottom right,
+        rgba(139,92,246,.15),
+        transparent 40%
+    ),
+
+    linear-gradient(
+        135deg,
+        #050816,
+        #081227,
+        #0b1020
+    );
+
+    color:white;
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* NAVBAR */
+
+.navbar{
+
+    background:rgba(5,8,22,.75);
+
+    backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(96,165,250,.15);
+
+    padding:18px 0;
+}
+
+.navbar-logo{
+
+    text-decoration:none;
+
+    font-size:1.4rem;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    color:white;
+}
+
+.navbar-logo:hover{
+    color:#93c5fd;
+}
+
+.nav-btn{
+
+    text-decoration:none;
+
+    color:#cbd5e1;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.nav-btn:hover{
+
+    color:white;
+
+    background:rgba(96,165,250,.15);
+}
+
+.nav-register{
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+        90deg,
+        #3b82f6,
+        #8b5cf6
+    );
+}
+
+.nav-register:hover{
+    color:white;
+}
+
+/* FOOTER */
+
+.footer-aespa{
+
+    margin-top:60px;
+
+    padding:25px;
+
+    text-align:center;
+
+    color:#64748b;
+
+    border-top:1px solid rgba(96,165,250,.1);
+}
+.aespa-dashboard{
+    min-height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-panel{
+    width:900px;
+    max-width:95%;
+
+    padding:50px;
+
+    border-radius:30px;
+
+    background:rgba(15,23,42,.55);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(96,165,250,.2);
+
+    box-shadow:
+        0 0 30px rgba(59,130,246,.15),
+        0 0 80px rgba(139,92,246,.08);
+
+    text-align:center;
+}
+
+.hero-title{
+    font-size:4.5rem;
+    font-weight:900;
+    letter-spacing:6px;
+
+    background:linear-gradient(
+        90deg,
+        #60a5fa,
+        #93c5fd,
+        #8b5cf6
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    margin-bottom:15px;
+}
+
+.hero-subtitle{
+    color:#94a3b8;
+    font-size:1.2rem;
+    margin-bottom:50px;
+}
+
+.modules{
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.module-box{
+
+    width:280px;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    background:rgba(30,41,59,.55);
+
+    border:1px solid rgba(96,165,250,.15);
+
+    transition:.35s;
+}
+
+.module-box:hover{
+
+    transform:translateY(-10px);
+
+    color:white;
+
+    border-color:#60a5fa;
+
+    box-shadow:
+        0 0 25px rgba(96,165,250,.25),
+        0 0 45px rgba(139,92,246,.12);
+}
+
+.module-icon{
+    font-size:3rem;
+    display:block;
+    margin-bottom:15px;
+}
+
+.module-box h3{
+    letter-spacing:2px;
+    font-size:1.4rem;
+}
+
+.module-box p{
+    color:#94a3b8;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+    {% include "components/navbar.html" %}
+    {% include "components/messages.html" %}
+
     <div class="container mt-4">
-      {% block content %}
-      {% endblock %}
+        {% block content %}{% endblock %}
     </div>
 
-    <!-- Scripts Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% include "components/footer.html" %}
+
 </body>
 </html>

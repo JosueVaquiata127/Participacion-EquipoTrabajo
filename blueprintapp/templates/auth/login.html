@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<div class="card-velvet mx-auto" style="max-width:500px">
+
+    <h2 class="text-center mb-4">
+         Iniciar Sesión
+    </h2>
+
+    <form method="POST">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Usuario
+            </label>
+
+            <input
+                type="text"
+                name="username"
+                class="form-control"
+                required>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Contraseña
+            </label>
+
+            <input
+                type="password"
+                name="password"
+                class="form-control"
+                required>
+
+        </div>
+
+        <button
+            class="btn btn-danger w-100">
+
+            Ingresar
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

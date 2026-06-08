@@ -1,4 +1,4 @@
-from blueprintapp.app import db
+from blueprintapp.extensions import db
 
 class Miembro(db.Model):
     __tablename__ = 'miembros'

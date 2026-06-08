@@ -1,6 +1,6 @@
 from flask import request, render_template, redirect, url_for, Blueprint
 
-from blueprintapp.app import db
+from blueprintapp.extensions import db
 
 bp_core = Blueprint('bp_core',__name__,template_folder='templates')
 

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="aespa-dashboard">
+
+    <div class="hero-panel">
+
+        <h1 class="hero-title">
+            AppLogin
+        </h1>
+
+        <p class="hero-subtitle">
+            Welcome to the Digital Synk
+        </p>
+
+        <div class="modules">
+
+            <a href="{{ url_for('bp_miembro.index') }}" class="module-box">
+                <span class="module-icon">👥</span>
+                <h3>MIEMBROS</h3>
+                <p>Administración del equipo</p>
+            </a>
+
+            <a href="{{ url_for('bp_tarea.index') }}" class="module-box">
+                <span class="module-icon">⚡</span>
+                <h3>TAREAS</h3>
+                <p>Seguimiento de actividades</p>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
